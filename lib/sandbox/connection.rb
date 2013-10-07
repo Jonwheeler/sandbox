@@ -18,17 +18,16 @@ module Sandbox
     end
 
     def info(name)
-      # @resp = RestClient.get("#{BASE_URL}/#{name}")
+      @resp = RestClient.get("#{BASE_URL}/#{name}")
       self
     end
 
     def success?
-      # resp[:result] === true
-      false
+      resp[:result] === true
     end
 
     def errors
-      @resp[:errors] ||= []
+      resp[:errors] ||= []
     end
   end
 end
