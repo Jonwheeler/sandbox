@@ -1,6 +1,6 @@
-# Sandbox
+# Sandbox CLI
 
-TODO: Write a gem description
+CLI for building and destroying Linux VMs
 
 ## Installation
 
@@ -18,7 +18,37 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To create a VM
+
+```
+$ sandbox create -n foo -m 1000
+```
+
+To destroy a VM
+
+```
+$ sandbox destroy -n foo
+```
+
+To get information and stats about a VM
+
+```
+$ sandbox info -n foo
+```
+
+### Options
+```
+  -n, --name                       Name of Sandbox Virtual Server
+  -m, --memory                     Memory Requirement for Server (defaults to 512MB)
+  -v, --version                    Show version
+  -d, --debug                      Enable debugging ( needs implementing)
+```
+
+## Testing
+
+```
+  rspec spec/
+```
 
 ## Contributing
 
@@ -27,3 +57,6 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+
