@@ -2,6 +2,10 @@
 
 CLI for building and destroying Linux VMs
 
+### Dependencies
+ - Terminal Helpers
+ - Rest-Client
+
 ## Installation
 
 Add this line to your application's Gemfile:
