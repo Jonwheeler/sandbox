@@ -4,7 +4,7 @@ module Sandbox
       attr_reader :client, :ui
 
       def call
-        raise NotImplementedError "Must be implemented"
+        raise NotImplementedError.new("Must be implemented")
       end
     end
   end
