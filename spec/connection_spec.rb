@@ -15,6 +15,14 @@ describe Sandbox::Connection do
   end
 
   describe "#create" do
+    let(:config) {{ name: "foo", memory: "512" }}
+
+    it "POSTs to the api with the config" do
+      expect(RestClient).to receive(:post)
+        .with("#{base_url}/create", config)
+
+      connection.create(config)
+    end
   end
 
   describe "#destroy" do
@@ -22,7 +30,7 @@ describe Sandbox::Connection do
   end
 
   describe "#info" do
-    it "calls the api with a GET request" do
+    it "calls the api with the VM name" do
       expect(RestClient).to receive(:get)
         .with("#{base_url}/foo")
 

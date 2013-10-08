@@ -7,13 +7,12 @@ module Sandbox
     attr_reader :resp
 
     def create(params)
-     # @resp = RestClient.post("#{BASE_URL}/create", params)
+      @resp = RestClient.post("#{BASE_URL}/create", params)
       self
     end
 
     def destroy(name)
-      @resp = {errors: [{foo: "bar"}, {baz: "foo"}, {buzz: "bum"}]}
-      # @resp = RestClient.delete("#{BASE_URL}/#{name}")
+      @resp = RestClient.delete("#{BASE_URL}/#{name}")
       self
     end
 
