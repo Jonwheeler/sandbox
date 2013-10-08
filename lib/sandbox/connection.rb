@@ -6,6 +6,10 @@ module Sandbox
 
     attr_reader :resp
 
+    def initialize
+      @resp = {}
+    end
+
     def create(params)
       @resp = RestClient.post("#{BASE_URL}/create", params)
       self

@@ -1,4 +1,4 @@
-require "sandbox/connection"
+require "spec_helper"
 
 describe Sandbox::Connection do
 
@@ -83,6 +83,22 @@ describe Sandbox::Connection do
         connection.stub(:resp) {{ result: false }}
         expect(connection.success?).to be false 
       end
+    end
+  end
+
+  describe "#errors" do
+    it "is an empty array by default" do
+      expect(connection.errors).to eq []
+    end
+
+    it "is empty when there are no errors" do 
+      connection.stub(:resp) {{ errors: [] }}
+      expect(connection.errors).to eq []
+    end
+
+    it "returns the errors from the response" do
+      connection.stub(:resp) {{ errors: [{ name: "Name is not available." }] }}
+      expect(connection.errors).to include name: "Name is not available." 
     end
   end
 end
