@@ -5,7 +5,7 @@ describe Sandbox::Connection do
   let(:connection) { Sandbox::Connection.new }
   let(:base_url)   { "http://some-url.com/api/v1/containers" }
 
-  %i( get put delete ).each do |action|
+  %i( get post delete ).each do |action|
     before { RestClient.stub(action) { { result: true, name: "foo"} }}
   end
 
@@ -23,10 +23,33 @@ describe Sandbox::Connection do
 
       connection.create(config)
     end
+
+    it "returns self" do
+      expect(connection.create(config)).to eq connection
+    end
+
+    it "assigns resp" do
+      connection.create(config)
+      expect(connection.resp).to be_a(Hash)
+    end
   end
 
   describe "#destroy" do
+    it "calls the api with the VM name" do
+      expect(RestClient).to receive(:delete)
+        .with("#{base_url}/foo")
 
+      connection.destroy("foo")
+    end
+
+    it "returns self" do
+      expect(connection.destroy("foo")).to eq connection
+    end
+
+    it "assigns resp" do
+      connection.destroy("foo")
+      expect(connection.resp).to be_a(Hash)
+    end
   end
 
   describe "#info" do
@@ -48,7 +71,6 @@ describe Sandbox::Connection do
   end
 
   describe "#result" do
-
     context "response has successful result" do
       it "returns true" do
         connection.stub(:resp) {{ result: true }}
