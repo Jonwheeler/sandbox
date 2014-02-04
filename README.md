@@ -1,5 +1,7 @@
 # Sandbox CLI
 
+[![Code Climate](https://codeclimate.com/github/Jonwheeler/sandbox.png)](https://codeclimate.com/github/Jonwheeler/sandbox)
+
 CLI for building and destroying Linux VMs
 
 ### Dependencies
